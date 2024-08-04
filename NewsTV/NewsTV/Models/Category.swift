@@ -22,6 +22,28 @@ enum Category: String, CaseIterable {
         }
         return rawValue.capitalized
     }
+    var systemImage: String {
+        switch self {
+        case .general:
+            return "newspaper"
+        case .business:
+            return "building.2"
+        case .technology:
+            return "desktocomputer"
+        case .entetainment:
+            return "tv"
+        case .sport:
+            return "sportscourt"
+        case .science:
+            return "wave.3.right"
+        case .health:
+            return "cross"
+        }
+    }
+    
+    var sortIndex: Int {
+        Self.allCases.firstIndex(of: self) ?? 0
+    }
 }
 
 extension Category: Identifiable {

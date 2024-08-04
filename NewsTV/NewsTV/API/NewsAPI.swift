@@ -27,6 +27,46 @@ struct NewsAPI {
         try await fetchArticles(from: generateSearchURL(from: query))
     }
     
+    func fetchAllCategoryArticles() async throws -> [CategoryArticles] {
+        try await withThrowingTaskGroup(of: Result<CategoryArticles, Error>.self){ group in
+            for category in Category.allCases{
+                group.addTask {
+                    await fetchResult(from: category)
+                }
+            }
+            
+            var results = [Result<CategoryArticles, Error>]()
+            for try await result in group {
+                results.append(result)
+            }
+            
+            if let first = results.first,
+               case .failure(let error) = first,
+               (error as NSError).code == 401 {
+                throw error
+            }
+            
+            var categories = [ CategoryArticles]()
+            for result in results {
+                if case .success(let value) = result {
+                    categories.append(value)
+                }
+            }
+            
+            categories.sort { $0.category.sortIndex > $1.category.sortIndex }
+            return categories
+        }
+    }
+    
+    private func fetchResult(from category: Category) async -> Result<CategoryArticles, Error>{
+        do{
+            let articles = try await fetchArticles(from: generatedNewsURL(from: category))
+            return .success(CategoryArticles(category: category, articles: articles))
+        }catch {
+            return .failure(error)
+        }
+    }
+    
     private func fetchArticles(from url: URL) async throws -> [Article]{
         let (data, response) = try await session.data(from: url)
         
@@ -40,7 +80,8 @@ struct NewsAPI {
             if apiResponse.status == "ok" {
                 return apiResponse.articles ?? []
             } else {
-                throw generateError(description: apiResponse.message ?? "A error occured")
+                let errorCode = response.statusCode == 401 ? 401 : 1
+                throw generateError(code: errorCode, description: apiResponse.message ?? "A error occured")
             }
         default:
             throw generateError(description: "An Error occured")
