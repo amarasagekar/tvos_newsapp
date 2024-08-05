@@ -61,6 +61,13 @@ extension Article {
         let apiResponse = try! jsonDecoder.decode(NewsAPIResponse.self, from: data)
         return apiResponse.articles ?? []
     }
+    
+    static var previewCategoryArticles:[CategoryArticles] {
+        let articles = previewData
+        return Category.allCases.map {
+            .init(category: $0, articles: articles.shuffled())
+        }
+    }
 }
 
 struct Source {
