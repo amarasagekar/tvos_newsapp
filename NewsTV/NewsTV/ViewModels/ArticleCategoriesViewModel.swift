@@ -34,4 +34,3 @@ class ArticleCategoriesViewModel: ObservableObject {
     }
 }
 
-43:20
