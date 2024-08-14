@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		091157F12C6D09DD0046ECD2 /* ArticleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091157F02C6D09DD0046ECD2 /* ArticleDetailView.swift */; };
 		09575B912C5DF7A400A2E5D7 /* ArticleCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09575B902C5DF7A400A2E5D7 /* ArticleCarouselView.swift */; };
 		09575B932C5E039A00A2E5D7 /* CategoryArticles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09575B922C5E039A00A2E5D7 /* CategoryArticles.swift */; };
 		0957F7642C5888BA00084030 /* ArticleBookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0957F7622C5888BA00084030 /* ArticleBookmarkViewModel.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		091157F02C6D09DD0046ECD2 /* ArticleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailView.swift; sourceTree = "<group>"; };
 		09575B902C5DF7A400A2E5D7 /* ArticleCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCarouselView.swift; sourceTree = "<group>"; };
 		09575B922C5E039A00A2E5D7 /* CategoryArticles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryArticles.swift; sourceTree = "<group>"; };
 		0957F7622C5888BA00084030 /* ArticleBookmarkViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleBookmarkViewModel.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				09D160742C69171E00ADE11B /* EmptyPlaceholderView.swift */,
 				09D160762C69173500ADE11B /* RetryView.swift */,
 				09D160782C691A8B00ADE11B /* NewsView.swift */,
+				091157F02C6D09DD0046ECD2 /* ArticleDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 				096B2D1F2C573B3400051F74 /* NewsTVApp.swift in Sources */,
 				0957F76A2C5888D700084030 /* NewsAPIResponse.swift in Sources */,
 				0957F7642C5888BA00084030 /* ArticleBookmarkViewModel.swift in Sources */,
+				091157F12C6D09DD0046ECD2 /* ArticleDetailView.swift in Sources */,
 				0957F76B2C5888D700084030 /* Category.swift in Sources */,
 				0957F7752C5889D500084030 /* ArticleNewsViewModel.swift in Sources */,
 				09D160772C69173500ADE11B /* RetryView.swift in Sources */,
