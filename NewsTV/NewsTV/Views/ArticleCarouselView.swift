@@ -33,9 +33,9 @@ struct ArticleCarouselView: View {
                         .buttonStyle(.card)
                     }
                 }
+                .padding([.bottom, .horizontal], 64)
+                .padding(.top, 32)
             }
-            .padding([.bottom, .horizontal], 64)
-            .padding(.top, 32)
         }
     }
 }

@@ -40,8 +40,9 @@ struct ArticleItemViews: View {
                         }
                     }
                 }
+                .padding([.horizontal, .bottom])
             }
-            .padding([.horizontal, .bottom])
+           
         }
     }
     

@@ -18,6 +18,7 @@ struct NewsView: View {
                 }
             }
         }
+        .overlay(overlayView)
         .task(refreshTask)
     }
     
@@ -48,3 +49,4 @@ struct NewsView: View {
 #Preview {
     NewsView()
 }
+

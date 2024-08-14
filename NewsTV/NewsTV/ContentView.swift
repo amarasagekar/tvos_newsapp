@@ -10,7 +10,8 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         TabView {
-            Text("News")
+            NewsView()
+                .edgesIgnoringSafeArea(.horizontal)
                 .tabItem {
                     Label("News", systemImage: "newspaper")
                 }

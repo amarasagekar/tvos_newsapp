@@ -53,7 +53,7 @@ struct NewsAPI {
                 }
             }
             
-            categories.sort { $0.category.sortIndex > $1.category.sortIndex }
+            categories.sort { $0.category.sortIndex < $1.category.sortIndex }
             return categories
         }
     }
