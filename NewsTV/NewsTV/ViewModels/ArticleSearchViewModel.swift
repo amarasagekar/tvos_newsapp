@@ -5,6 +5,7 @@
 //  Created by AMAR on 25/07/24.
 //
 
+import Combine
 import SwiftUI
 
 @MainActor
@@ -16,13 +17,29 @@ class ArticleSearchViewModel: ObservableObject {
     private let historyDataStore = PlistDataStore<[String]>(fileName: "histories")
     private let historyMaxLimit = 10
     
+    private var cancellable = Set<AnyCancellable>()
+    
     private let newsAPI = NewsAPI.shared
     
     static let shared = ArticleSearchViewModel()
     private init() {
         load()
+        #if os(tvOS)
+        observeSearchQuery()
+        #endif
     }
     
+    private func observeSearchQuery(){
+        $searchQuery
+            .debounce(for: 1, scheduler: DispatchQueue.main)
+            .sink { _ in
+                Task{ [weak self] in
+                    guard let self = self else { return }
+                    await self.searchArticle()
+                }
+            }
+            .store(in: &cancellable)
+    }
     func addHistory(_ text: String) {
         if let index = history.firstIndex(where: { text.lowercased() == $0.lowercased()}){
             history.remove(at: index)

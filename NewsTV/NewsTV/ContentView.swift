@@ -17,13 +17,13 @@ struct ContentView: View {
                 }
                 .tag("news")
             
-            Text("Saved")
+            BookmarkTabView()
                 .tabItem {
                     Label("Saved", systemImage: "bookmark")
                 }
                 .tag("saved")
             
-            Text("Search")
+            SearchTabView()
                 .tabItem {
                     Image(systemName: "magnifyingglass")
                 }
